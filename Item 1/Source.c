@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 //Taiyo Suzuki
 //Sept 30, 2022
