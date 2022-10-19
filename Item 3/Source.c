@@ -1,3 +1,4 @@
+#include "Functions.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
@@ -14,32 +15,24 @@
 
 int main(void)
 {
-	int dayInput = 1;																					//user input variable intialized as positive value for while loop to function
+	int dayInput = 1;																				//user input variable intialized as positive value for while loop to function
 	int weeks, daysRemain;
 
-	printf("Enter a number of days. Enter a nonpositive value such as 0 or -1 to end program.\n");		//print program instructions
+	printf("Enter a number of days. Enter a nonpositive value such as 0 or -1 to end program.\n");	//print program instructions
 
 	while (dayInput > 0)
 	{
-		printf("\nDays: ");																				//ask for user input
+		printf("\nDays: ");																			//ask for user input
 
-		if (scanf_s("%d", &dayInput) == 0)																//scan for user input and check if it is an integer, and if it is, save it
+		if (scanf_s("%d", &dayInput) == 0)															//scan for user input and check if it is an integer, and if it is, save it
 		{
-			printf("\nInput not recognised as an integer, please try again.\n");						//if it is not an integer, exit the program
+			printf("\nInput not recognised as an integer, please try again.\n");					//if it is not an integer, exit the program
 			exit(1);
 		}
 
-		if (dayInput <= 0)																				//exit program if input is nonpositive value
-		{
-			printf("\nExiting.\n");
-			exit(1);
-		}
+		TimeToExit(&dayInput);
 
-		weeks = dayInput / DAYS_IN_WEEK;																//calculate weeks from days (divide)
-
-		daysRemain = dayInput % DAYS_IN_WEEK;															//calculate remainder from division (modulus operator %)
-
-		printf("\n%d days are %d weeks, %d days\n", dayInput, weeks, daysRemain);						//print output
+		PrintFormattedWeeks(&dayInput, &weeks, &daysRemain);											
 	}
 
 	printf("\nExiting.\n");
